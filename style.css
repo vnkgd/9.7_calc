@@ -7,3 +7,9 @@
     text-align: end;
     font-size: x-large;
 }
+
+body {
+	height: 100%;
+	background: url(https://i0.wp.com/itc.ua/wp-content/uploads/2015/10/0qmm-dYUnrhKWsgmClbLEvBSfpfJUngkZtPxgiqMiNw.jpg);
+	background-size: cover;
+}
