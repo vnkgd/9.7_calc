@@ -2,10 +2,15 @@ let lastOperand = 0;
 let operation = null;
 
 const inputWindow = document.getElementById('inputWindow');
+const lastresult = document.getElementById('lastresult');
 
+// курсор на поле по умолчнию при загрузке страницы и установка 0 по умолчанию и показ предыдущего результата
 function setFocus() {
-     document.getElementById("inputWindow").focus();
-     inputWindow.value = 0; 
+    document.getElementById("inputWindow").focus();
+    inputWindow.value = 0;
+    someVarName = localStorage.getItem("someVarKey");
+    console.log (someVarName);
+    lastresult.value = someVarName;
 }
 
 document.getElementById('btn_clr').addEventListener('click', function () {
@@ -122,6 +127,11 @@ document.getElementById('btn_calc').addEventListener('click', function () {
     //     lastOperand = 0;
     //     inputWindow.value = result;
     // }
+    var someVarName = parseInt(inputWindow.value);
+    // //var someVarName = "value";
+    localStorage.setItem("someVarKey", someVarName);
+    var someVarName = localStorage.getItem("someVarKey");
+    // console.log (someVarName);
 })
 
 // извелчение квадратного корня
@@ -147,11 +157,12 @@ document.getElementById('inputWindow').addEventListener('click', function () {
     inputWindow.value = result;
 })
 
-// курсор на поле по умолчнию при загрузке страницы и установка 0 по умолчанию
-function focusandzero() {
-    document.getElementById("inputWindow").focus();
-    inputWindow.value = 0; 
-}
+// // курсор на поле по умолчнию при загрузке страницы и установка 0 по умолчанию
+// function focusandzero() {
+//     document.getElementById("inputWindow").focus();
+//     inputWindow.value = 0;
+//     var someVarName = localStorage.getItem("someVarKey");
+// }
 
 // добавить запятую к числу
 // document.getElementById('btn_comma').addEventListener('click', function () {
@@ -193,4 +204,21 @@ function focusandzero() {
 // 		b = 0;
 // }
 // document.getElementById("totalSpan").innerHTML = numberWithCommas(parseFloat(a + b).toFixed(2));
+// }
+
+// сохранение значения после обновления страницы
+
+// savedresult = 
+// var someVarName = result;
+// //var someVarName = "value";
+// localStorage.setItem("someVarKey", someVarName);
+// var someVarName = localStorage.getItem("someVarKey");
+// console.log (someVarName);
+
+// document.getElementById('btn_calc').addEventListener('click', function () {
+//     someVarName = parseInt(inputWindow.value);
+//     //var someVarName = "value";
+//     localStorage.setItem("someVarKey", someVarName);
+//     someVarName = localStorage.getItem("someVarKey");
+//     console.log (someVarName);
 // }
