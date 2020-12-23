@@ -1,5 +1,6 @@
 let lastOperand = 0;
 let operation = null;
+decimalAdded = false;
 
 const inputWindow = document.getElementById('inputWindow');
 const lastresult = document.getElementById('lastresult');
@@ -88,6 +89,7 @@ document.getElementById('btn_multiply').addEventListener('click', function () {
     lastOperand = parseInt(inputWindow.value);
     operation = 'multiply';
     inputWindow.value = '';
+    decimalAdded = false;
 })
 
 document.getElementById('btn_divide').addEventListener('click', function () {
@@ -142,6 +144,15 @@ document.getElementById('btn_sqrt').addEventListener('click', function () {
     inputWindow.value = result;
 })
 
+// унарный минус "±" меняет знак числа на противоположный:
+document.getElementById('btn_plus_minus').addEventListener('click', function () {
+    const result = -parseInt(inputWindow.value);
+    operation = null;
+    lastOperand = 0;
+    inputWindow.value = result;
+})
+
+
 // удаление последнего символа в строке
 document.getElementById('btn_del').addEventListener('click', function () {
     valuebefore = inputWindow.value;
@@ -149,27 +160,67 @@ document.getElementById('btn_del').addEventListener('click', function () {
     inputWindow.value = valueafter;
 })
 
-// корень из числа
-document.getElementById('inputWindow').addEventListener('click', function () {
-    const result = Math.sqrt(parseInt(inputWindow.value));
-    operation = null;
-    lastOperand = 0;
-    inputWindow.value = result;
-})
-
-// // курсор на поле по умолчнию при загрузке страницы и установка 0 по умолчанию
-// function focusandzero() {
-//     document.getElementById("inputWindow").focus();
-//     inputWindow.value = 0;
-//     var someVarName = localStorage.getItem("someVarKey");
-// }
-
 // добавить запятую к числу
+// comma.onclick = function() {
+// for(var i = 0; i < keys.length; i++) {
+// 	keys[i].onclick = function() {
+//     inputWindow.value = inputWindow.value + ",";
+//     var input = document.querySelector('.inputWindow');
+//     // var inputVal = input.innerHTML;
+// 	// 	var btnVal = this.innerHTML;
+//     //     var total;
+        
+//         if(btnVal == '.') {
+// 			if(!decimalAdded) {
+// 				input.innerHTML += btnVal;
+// 				decimalAdded = true;
+// 			}
+// 		}
+        
+// // }
+// var decimalAdded = false;
+
 // document.getElementById('btn_comma').addEventListener('click', function () {
+//     inputWindow.value = inputWindow.value + ",";
+//     // decimalAdded = true;
+//     if if(btnVal == '.')
+//         if(!decimalAdded) {
+//         inputWindow.value += inputWindow.value;
+//                 decimalAdded = true;
+//             }
+//             else if(btnVal == '.') {
+//                 if(!decimalAdded) {
+//                     input.innerHTML += btnVal;
+//                     decimalAdded = true;
+//                 }
+//             }
+// })
+
 //     // lastOperand = parseInt(inputWindow.value);
 //     // operation = 'comma';
-//     inputWindow.value = inputWindow.value + ",";
+//     // inputWindow.value = inputWindow.value + ",";
+//     var btnVal = this.innerHTML;
+//     if(btnVal == ',') {
+//     if(!decimalAdded) {
+//         input.innerHTML += btnVal;
+//         decimalAdded = true;
+//     }
+// }
+
+
+
+    
+    // [buttonDecimalPoint setEnabled: NO];
 // })
+
+// var btnVal = this.innerHTML;
+// if(btnVal == ',') {
+//     if(!decimalAdded) {
+//         input.innerHTML += btnVal;
+//         decimalAdded = true;
+//     }
+// }
+
 
 // //Using this script, the input numbers will be formatted.
 // $('.number').keyup(function(event) {
@@ -222,3 +273,122 @@ document.getElementById('inputWindow').addEventListener('click', function () {
 //     someVarName = localStorage.getItem("someVarKey");
 //     console.log (someVarName);
 // }
+
+
+
+        // //var str = "123,456,789"; // Для тестирования, чтобы не вводить руками
+        // var str = prompt("Введите число с запятыми. Останется первая запятая.");
+        // var comma = ",";
+        // // Первый индекс запятой
+        // var firstIndex = str.indexOf(comma);
+        // if (firstIndex > -1) { // Есть запятая
+        //     // Часть строки с удаленными запятыми
+        //     var rest = str.slice(firstIndex + 1).split(comma).join("");
+        //     // Соединить начало строки с первой запятой и остатком строки без запятых
+        //     var result = str.slice(0, firstIndex + 1) + rest;
+        //     alert(result);
+        // }
+        // else
+        //     alert(str);
+
+
+//         #define FLOATING_POINT_STRING @"."; // set this to @"." or @"," according to the floating point type you want to use
+// float calculatorText = 45.194; // set this to whatever the label says, or you can skip the float => string conversion as shown below
+// NSString *text = [NSString stringWithFormat:@"%f", calculatorText];
+
+// if ([text rangeOfString:FLOATING_POINT_STRING].location != NSNotFound)
+// {
+//     // do nothing, there is a floating point
+// }
+// else
+// { 
+// // append FLOATING_POINT_STRING to the label
+// }
+
+// var keys = document.querySelectorAll('.container');
+// var operators = ['+', '-', 'x', '÷'];
+// var decimalAdded = false;
+
+
+// for(var i = 0; i < keys.length; i++) {
+// 	keys[i].onclick = function(e) {
+		
+// 		var input = document.querySelector('.screen');
+// 		// var inputVal = input.innerHTML;
+// 		var btnVal = this.innerHTML;
+// 		var total;
+// 		if(btnVal == 'C') {
+// 			input.innerHTML = '';
+// 			decimalAdded = false;
+// 		}
+		
+// 		// else if(btnVal == '=') {
+// 		// 	var equation = inputVal;
+// 		// 	var lastChar = equation[equation.length - 1];
+			
+// 		// 	equation = equation.replace(/x/g, '*').replace(/÷/g, '/');
+			
+// 		// 	if(operators.indexOf(lastChar) > -1 || lastChar == '.')
+// 		// 		equation = equation.replace(/.$/, '');
+			
+// 		// 	if(equation)
+// 		// 		{
+//         //      total = eval(equation);
+//         //       if(total.toString().indexOf('.') != -1)
+//         //         total= total.toFixed(2);
+          
+//         //   input.innerHTML = total;
+//         // }
+				
+// 		// 	decimalAdded = false;
+// 		// }
+		
+		
+// 		// else if(operators.indexOf(btnVal) > -1) {
+			
+// 		// 	var lastChar = inputVal[inputVal.length - 1];
+			
+// 		// 	if(inputVal != '' && operators.indexOf(lastChar) == -1) 
+// 		// 		input.innerHTML += btnVal;
+			
+// 		// 	else if(inputVal == '' && btnVal == '-') 
+// 		// 		input.innerHTML += btnVal;
+			
+// 		// 	if(operators.indexOf(lastChar) > -1 && inputVal.length > 1) {
+// 		// 		input.innerHTML = inputVal.replace(/.$/, btnVal);
+// 		// 	}
+			
+// 		// 	decimalAdded =false;
+// 		// }
+		
+// 		else if(btnVal == ',') {
+// 			if(!decimalAdded) {
+// 				input.innerHTML += btnVal;
+// 				decimalAdded = true;
+// 			}
+// 		}
+		
+// 		// else {
+// 		// 	input.innerHTML += btnVal;
+// 		// }
+		
+// 		e.preventDefault();
+// 	} 
+// }
+
+// document.getElementById('btn_comma').addEventListener('click', function () {
+    //     inputWindow.value = inputWindow.value + ",";
+    
+// comma = document.querySelector('#btn_comma');
+
+// decimalAdded = false;
+
+// document.querySelector('.screen');
+document.getElementById('btn_comma').addEventListener('click', function () {
+    if(!decimalAdded) {
+    inputWindow.value = inputWindow.value + ".";
+        decimalAdded = true;
+    }
+})
+
+// inputWindow.value = inputWindow.value + ","
